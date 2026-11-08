@@ -155,35 +155,35 @@ const nextBtn = document.querySelector('.testimonial-next');
 let currentTestimonial = 0;
 
 function showTestimonial(index) {
+    if (!testimonials.length || !testimonials[index]) return; // guard: không có testimonial
     testimonials.forEach(t => t.classList.remove('active'));
     dots.forEach(d => d.classList.remove('active'));
-
     testimonials[index].classList.add('active');
-    dots[index].classList.add('active');
+    if (dots[index]) dots[index].classList.add('active');
     currentTestimonial = index;
 }
 
-if (prevBtn && nextBtn) {
+if (prevBtn && nextBtn && testimonials.length > 0) {
     prevBtn.addEventListener('click', () => {
-        const index = (currentTestimonial - 1 + testimonials.length) % testimonials.length;
-        showTestimonial(index);
+        showTestimonial((currentTestimonial - 1 + testimonials.length) % testimonials.length);
     });
-
     nextBtn.addEventListener('click', () => {
-        const index = (currentTestimonial + 1) % testimonials.length;
-        showTestimonial(index);
+        showTestimonial((currentTestimonial + 1) % testimonials.length);
     });
 }
 
-dots.forEach((dot, index) => {
-    dot.addEventListener('click', () => showTestimonial(index));
-});
+if (dots.length > 0) {
+    dots.forEach((dot, index) => {
+        dot.addEventListener('click', () => showTestimonial(index));
+    });
+}
 
-// Auto-rotate testimonials
-setInterval(() => {
-    const index = (currentTestimonial + 1) % testimonials.length;
-    showTestimonial(index);
-}, 6000);
+// Auto-rotate testimonials (chỉ khi có testimonial)
+if (testimonials.length > 0) {
+    setInterval(() => {
+        showTestimonial((currentTestimonial + 1) % testimonials.length);
+    }, 6000);
+}
 
 // ===== Contact Form =====
 const contactForm = document.getElementById('contact-form');
