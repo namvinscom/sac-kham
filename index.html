@@ -464,7 +464,7 @@
                             <!-- Dây chuyền khảm xà cừ -->
                             <div class="jewelry-item" data-category="modern necklace sunmoon" data-aos="fade-up">
                                 <div class="jewelry-image">
-                                    <img src="assets/images/tải_xuống_3.jpg" class="contain-fit" alt="Dây Chuyền Mặt Trăng Ôm Mặt Trời" />
+                                    <img src="assets/images/tai_xuong_3.jpg" class="contain-fit" alt="Dây Chuyền Mặt Trăng Ôm Mặt Trời" />
                                     <div class="jewelry-quick">
                                         <button class="quick-view" data-product="necklace-sunmoon">Xem Chi Tiết</button>
                                     </div>
@@ -479,7 +479,7 @@
                             <!-- Vòng tay khảm xà cừ -->
                             <div class="jewelry-item" data-category="modern bracelet sunmoon" data-aos="fade-up" data-aos-delay="100">
                                 <div class="jewelry-image">
-                                    <img src="assets/images/tải_xuống_4.jpg" class="contain-fit" alt="Vòng Tay Mặt Trăng Ôm Mặt Trời" />
+                                    <img src="assets/images/tai_xuong_4.jpg" class="contain-fit" alt="Vòng Tay Mặt Trăng Ôm Mặt Trời" />
                                     <div class="jewelry-quick">
                                         <button class="quick-view" data-product="bracelet-sunmoon">Xem Chi Tiết</button>
                                     </div>
@@ -522,7 +522,7 @@
                             <!-- Dịch vụ custom riêng -->
                             <div class="jewelry-item" data-category="modern couple custom" data-aos="fade-up" data-aos-delay="100">
                                 <div class="jewelry-image">
-                                    <img src="assets/images/tải_xuống_5.jpg" class="contain-fit" alt="Dịch Vụ Custom Riêng Khắc Tên & NFC" />
+                                    <img src="assets/images/tai_xuong_5.jpg" class="contain-fit" alt="Dịch Vụ Custom Riêng Khắc Tên & NFC" />
                                     <div class="jewelry-quick">
                                         <button class="quick-view" data-product="couple-custom">Xem Chi Tiết</button>
                                     </div>
@@ -1183,86 +1183,130 @@
         </div>
     </div>
 
-    <!-- Cart Drawer -->
+    <!-- Full-Page Cart & Checkout Overlay -->
     <div id="cart-overlay" class="cart-overlay"></div>
     <aside id="cart-drawer" class="cart-drawer" aria-label="Giỏ hàng">
-        <!-- STEP 1: Cart list -->
-        <div id="cart-step-1">
-            <div class="cart-header">
-                <h3>Giỏ Hàng</h3>
-                <button id="cart-close" class="cart-close" aria-label="Đóng">&times;</button>
-            </div>
-            <ul id="cart-items" class="cart-items"></ul>
-            <p id="cart-empty" class="cart-empty">Giỏ hàng của bạn đang trống.</p>
-            <div id="cart-footer" class="cart-footer" style="display:none;">
-                <button id="cart-checkout-btn" class="btn btn-primary btn-full">
-                    <span>Đặt Hàng Ngay</span>
-                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        <div class="cart-full-wrap">
+            <!-- Top bar -->
+            <div class="cart-top-bar">
+                <div class="cart-top-brand">
+                    <img src="assets/images/logo.png" alt="Sắc Khảm" class="cart-logo-img" onerror="this.style.display='none'">
+                    <h3>Sắc Khảm — Giỏ Hàng</h3>
+                </div>
+                <div class="cart-steps-nav">
+                    <span class="cart-step-dot active" id="step-nav-1">1. Giỏ Hàng</span>
+                    <span class="step-nav-arrow">→</span>
+                    <span class="cart-step-dot" id="step-nav-2">2. Đặt Hàng</span>
+                    <span class="step-nav-arrow">→</span>
+                    <span class="cart-step-dot" id="step-nav-3">3. Hoàn Tất</span>
+                </div>
+                <button id="cart-close" class="cart-close-full" aria-label="Đóng giỏ hàng">
+                    <span>Đóng</span>
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
                 </button>
             </div>
-        </div>
 
-        <!-- STEP 2: Checkout form -->
-        <div id="cart-step-2" style="display:none;">
-            <div class="cart-header">
-                <button id="cart-back-btn" class="cart-back-btn" aria-label="Quay lại">
-                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
-                    Quay lại
-                </button>
-                <h3>Thông Tin Đặt Hàng</h3>
-                <button id="cart-close-2" class="cart-close" aria-label="Đóng">&times;</button>
+            <!-- STEP 1: Cart list -->
+            <div id="cart-step-1" class="cart-step-content">
+                <ul id="cart-items" class="cart-items-table"></ul>
+                <div id="cart-empty" class="cart-empty-full">
+                    <div class="empty-icon">🛍️</div>
+                    <h4>Giỏ hàng của bạn đang trống</h4>
+                    <p>Khám phá các tuyệt tác khảm xà cừ Chuôn Ngọ và thêm vào giỏ hàng.</p>
+                    <button class="btn btn-outline" id="empty-shop-btn" style="margin-top: 16px;">Khám Phá Sản Phẩm Ngay</button>
+                </div>
+                <div id="cart-footer" class="cart-bottom-bar" style="display:none;">
+                    <div class="cart-summary-text">
+                        <span>✦ Miễn phí gói quà nghệ thuật Sắc Khảm & vận chuyển toàn quốc</span>
+                    </div>
+                    <div class="cart-actions-group">
+                        <button id="cart-continue-btn" class="btn btn-outline">Tiếp Tục Mua Sắm</button>
+                        <button id="cart-checkout-btn" class="btn btn-primary">
+                            <span>Tiến Hành Đặt Hàng</span>
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                        </button>
+                    </div>
+                </div>
             </div>
-            <div class="checkout-order-summary" id="checkout-summary"></div>
-            <form id="checkout-form" class="checkout-form">
-                <div class="checkout-section-label">Thông tin người nhận</div>
-                <div class="form-group">
-                    <input type="text" id="co-name" name="name" required placeholder=" " autocomplete="name"/>
-                    <label for="co-name">Họ và Tên *</label>
-                </div>
-                <div class="form-group">
-                    <input type="tel" id="co-phone" name="phone" required placeholder=" " autocomplete="tel" pattern="[0-9]{9,11}"/>
-                    <label for="co-phone">Số Điện Thoại *</label>
-                </div>
-                <div class="form-group">
-                    <input type="email" id="co-email" name="email" placeholder=" " autocomplete="email"/>
-                    <label for="co-email">Email (để nhận xác nhận)</label>
-                </div>
-                <div class="form-group">
-                    <input type="text" id="co-address" name="address" required placeholder=" " autocomplete="street-address"/>
-                    <label for="co-address">Địa chỉ nhận hàng *</label>
-                </div>
-                <div class="checkout-section-label" style="margin-top:16px;">Yêu cầu thêm (tuỳ chọn)</div>
-                <div class="form-group">
-                    <input type="text" id="co-engrave" name="engrave" placeholder=" "/>
-                    <label for="co-engrave">Nội dung khắc tên / lời nhắn NFC</label>
-                </div>
-                <div class="form-group">
-                    <textarea id="co-note" name="note" rows="3" placeholder=" "></textarea>
-                    <label for="co-note">Ghi chú đơn hàng</label>
-                </div>
-                <button type="submit" class="btn btn-primary btn-full" id="checkout-submit-btn">
-                    <span>Xác Nhận Đặt Hàng</span>
-                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 2L11 13"/><path d="M22 2l-7 20-4-9-9-4 20-7z"/></svg>
-                </button>
-                <p class="checkout-note">✦ Sắc Khảm sẽ liên hệ xác nhận đơn qua Zalo/điện thoại trong vòng 30 phút.</p>
-            </form>
-        </div>
 
-        <!-- STEP 3: Success -->
-        <div id="cart-step-3" style="display:none;">
-            <div class="cart-header">
-                <h3>Đặt Hàng Thành Công</h3>
-                <button id="cart-close-3" class="cart-close" aria-label="Đóng">&times;</button>
-            </div>
-            <div class="checkout-success">
-                <div class="success-icon">✦</div>
-                <h4>Cảm ơn bạn đã đặt hàng!</h4>
-                <p id="success-name-msg">Sắc Khảm đã nhận được đơn hàng và sẽ liên hệ xác nhận trong vòng 30 phút.</p>
-                <div class="success-contact">
-                    <strong>Zalo / Hotline:</strong> 0941596276<br>
-                    <strong>Email:</strong> sackham.vn@gmail.com
+            <!-- STEP 2: Checkout form -->
+            <div id="cart-step-2" class="cart-step-content" style="display:none;">
+                <div class="checkout-grid">
+                    <!-- Left: Order summary -->
+                    <div class="checkout-left-col">
+                        <div class="checkout-summary-card">
+                            <div class="summary-header">
+                                <h4>Tóm Tắt Đơn Hàng</h4>
+                                <button id="cart-back-btn" class="cart-back-btn" type="button">
+                                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+                                    Chỉnh sửa giỏ hàng
+                                </button>
+                            </div>
+                            <div id="checkout-summary" class="checkout-order-summary"></div>
+                            <div class="checkout-perks">
+                                <div class="perk-item">✦ Miễn phí khắc laser tên, chữ ký hoặc ngày kỷ niệm</div>
+                                <div class="perk-item">✦ Tích hợp công nghệ chạm NFC lời nhắn số tương lai</div>
+                                <div class="perk-item">✦ Đóng gói hộp quà nhung nghệ thuật cao cấp</div>
+                                <div class="perk-item">✦ Bảo hành phục chế & làm sáng xà cừ trọn đời</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Right: Delivery Info Form -->
+                    <div class="checkout-right-col">
+                        <form id="checkout-form" class="checkout-form-full">
+                            <h4 class="form-title">Thông Tin Người Nhận</h4>
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <input type="text" id="co-name" name="name" required placeholder=" " autocomplete="name"/>
+                                    <label for="co-name">Họ và Tên *</label>
+                                </div>
+                                <div class="form-group">
+                                    <input type="tel" id="co-phone" name="phone" required placeholder=" " autocomplete="tel" pattern="[0-9]{9,11}"/>
+                                    <label for="co-phone">Số Điện Thoại *</label>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <input type="email" id="co-email" name="email" placeholder=" " autocomplete="email"/>
+                                <label for="co-email">Email (nhận xác nhận đơn)</label>
+                            </div>
+                            <div class="form-group">
+                                <input type="text" id="co-address" name="address" required placeholder=" " autocomplete="street-address"/>
+                                <label for="co-address">Địa chỉ giao hàng (Số nhà, tên đường, phường/xã, quận/huyện, tỉnh/TP) *</label>
+                            </div>
+                            <div class="checkout-section-label" style="margin-top:16px;">Yêu Cầu Riêng (Tuỳ chọn)</div>
+                            <div class="form-group">
+                                <input type="text" id="co-engrave" name="engrave" placeholder=" "/>
+                                <label for="co-engrave">Nội dung khắc laser / Lời nhắn NFC</label>
+                            </div>
+                            <div class="form-group">
+                                <textarea id="co-note" name="note" rows="3" placeholder=" "></textarea>
+                                <label for="co-note">Ghi chú cho nghệ nhân Sắc Khảm</label>
+                            </div>
+                            <button type="submit" class="btn btn-primary btn-full" id="checkout-submit-btn" style="padding: 16px; font-size: 1rem;">
+                                <span>Xác Nhận Đặt Hàng</span>
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 2L11 13"/><path d="M22 2l-7 20-4-9-9-4 20-7z"/></svg>
+                            </button>
+                            <p class="checkout-note">✦ Đội ngũ Sắc Khảm sẽ liên hệ xác nhận qua điện thoại / Zalo trong vòng 30 phút.</p>
+                        </form>
+                    </div>
                 </div>
-                <button id="success-close-btn" class="btn btn-primary btn-full" style="margin-top:20px;">Tiếp Tục Mua Sắm</button>
+            </div>
+
+            <!-- STEP 3: Success -->
+            <div id="cart-step-3" class="cart-step-content" style="display:none;">
+                <div class="checkout-success-full">
+                    <div class="success-icon-badge">✦</div>
+                    <span class="service-badge">Đặt Hàng Thành Công</span>
+                    <h2>Cảm Ơn Bạn Đã Đồng Hành Cùng Sắc Khảm!</h2>
+                    <p id="success-name-msg" class="success-lead">Đơn hàng của bạn đã được ghi nhận vào hệ thống thành công.</p>
+                    <div class="success-card-meta">
+                        <div class="meta-row"><strong>Đơn vị chế tác:</strong> Làng nghề Khảm Xà Cừ Chuôn Ngọ, Phú Xuyên, Hà Nội</div>
+                        <div class="meta-row"><strong>Hotline / Zalo:</strong> 0941596276 (Trần Mai Anh — Trưởng DA)</div>
+                        <div class="meta-row"><strong>Email chính thức:</strong> sackham.vn@gmail.com</div>
+                    </div>
+                    <button id="success-close-btn" class="btn btn-primary" style="margin-top:28px; padding: 14px 36px;">Tiếp Tục Khám Phá Sản Phẩm</button>
+                </div>
             </div>
         </div>
     </aside>

@@ -318,7 +318,7 @@ const productData = {
         title: 'Dây Chuyền Mặt Trăng Ôm Mặt Trời',
         category: 'Dòng Hiện Đại • BST Mặt Trăng Ôm Mặt Trời',
         price: 'Bản hòa ca Nhật Nguyệt • Đang chế tác hoàn thiện 20/11',
-        image: 'assets/images/tải_xuống_3.jpg',
+        image: 'assets/images/tai_xuong_3.jpg',
         features: [
             'Cảm hứng: Vầng dương ấm áp ôm trọn ánh nguyệt dịu dàng',
             'Chất liệu: Bạc 925 kết hợp viền xà cừ óng ánh',
@@ -331,7 +331,7 @@ const productData = {
         title: 'Vòng Tay Mặt Trăng Ôm Mặt Trời',
         category: 'Dòng Hiện Đại • BST Mặt Trăng Ôm Mặt Trời',
         price: 'Bản hòa ca Nhật Nguyệt • Đang chế tác hoàn thiện 20/11',
-        image: 'assets/images/tải_xuống_4.jpg',
+        image: 'assets/images/tai_xuong_4.jpg',
         features: [
             'Thiết kế vòng nguyệt ôm ánh dương tinh tế',
             'Xà cừ đại dương tuyển chọn từ tầng vân óng ả nhất',
@@ -359,7 +359,7 @@ const productData = {
         title: 'Dịch Vụ Custom Riêng Theo Yêu Cầu',
         category: 'Dòng Hiện Đại • Dịch Vụ Độc Quyền',
         price: 'Khắc tên laser riêng biệt & Tích hợp NFC bí mật',
-        image: 'assets/images/tải_xuống_5.jpg',
+        image: 'assets/images/tai_xuong_5.jpg',
         features: [
             'Chế tác theo thông điệp, chữ ký hoặc dấu vân tay độc bản',
             'Tích hợp chip NFC ẩn phát bài hát kỷ niệm, video, lời chúc',
@@ -595,6 +595,9 @@ const cartFooter = document.getElementById('cart-footer');
 const step1 = document.getElementById('cart-step-1');
 const step2 = document.getElementById('cart-step-2');
 const step3 = document.getElementById('cart-step-3');
+const stepNav1 = document.getElementById('step-nav-1');
+const stepNav2 = document.getElementById('step-nav-2');
+const stepNav3 = document.getElementById('step-nav-3');
 
 function saveCart() { localStorage.setItem('sk-cart', JSON.stringify(cart)); }
 
@@ -602,14 +605,17 @@ function showStep(n) {
     [step1, step2, step3].forEach((s, i) => {
         if (s) s.style.display = (i + 1 === n) ? 'flex' : 'none';
     });
+    [stepNav1, stepNav2, stepNav3].forEach((dot, i) => {
+        if (dot) dot.classList.toggle('active', i + 1 === n);
+    });
 }
 
 function renderCart() {
     const total = cart.reduce((s, i) => s + i.qty, 0);
     cartCountEl.textContent = total;
     cartCountEl.classList.toggle('visible', total > 0);
-    cartEmptyEl.style.display = cart.length ? 'none' : 'block';
-    if (cartFooter) cartFooter.style.display = cart.length ? 'block' : 'none';
+    cartEmptyEl.style.display = cart.length ? 'none' : 'flex';
+    if (cartFooter) cartFooter.style.display = cart.length ? 'flex' : 'none';
     cartItemsEl.innerHTML = cart.map(i => {
         const p = productData[i.id];
         if (!p) return '';
@@ -617,13 +623,14 @@ function renderCart() {
             <img src="${p.image}" alt="${p.title}">
             <div class="cart-item-info">
                 <span class="cart-item-title">${p.title}</span>
-                <div class="cart-qty">
-                    <button data-act="dec" data-id="${i.id}" aria-label="Giảm">&minus;</button>
-                    <span>${i.qty}</span>
-                    <button data-act="inc" data-id="${i.id}" aria-label="Tăng">+</button>
-                </div>
+                <span class="cart-item-category">${p.category || 'Xà cừ Chuôn Ngọ'} • ${p.price || ''}</span>
             </div>
-            <button class="cart-remove" data-act="rm" data-id="${i.id}" aria-label="Xóa">&times;</button>
+            <div class="cart-qty">
+                <button data-act="dec" data-id="${i.id}" aria-label="Giảm số lượng">&minus;</button>
+                <span>${i.qty}</span>
+                <button data-act="inc" data-id="${i.id}" aria-label="Tăng số lượng">+</button>
+            </div>
+            <button class="cart-remove" data-act="rm" data-id="${i.id}" aria-label="Xóa sản phẩm">&times;</button>
         </li>`;
     }).join('');
 }
@@ -632,15 +639,30 @@ function openCart() {
     showStep(1);
     cartDrawer.classList.add('active');
     cartOverlay.classList.add('active');
+    document.body.style.overflow = 'hidden';
 }
 function closeCart() {
     cartDrawer.classList.remove('active');
     cartOverlay.classList.remove('active');
+    document.body.style.overflow = '';
 }
 
 if (cartBtn) cartBtn.addEventListener('click', openCart);
 if (cartClose) cartClose.addEventListener('click', closeCart);
 if (cartOverlay) cartOverlay.addEventListener('click', closeCart);
+
+// Additional close and continue buttons
+const cartContinueBtn = document.getElementById('cart-continue-btn');
+const emptyShopBtn = document.getElementById('empty-shop-btn');
+if (cartContinueBtn) cartContinueBtn.addEventListener('click', closeCart);
+if (emptyShopBtn) emptyShopBtn.addEventListener('click', closeCart);
+
+// Escape key to close cart
+document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && cartDrawer && cartDrawer.classList.contains('active')) {
+        closeCart();
+    }
+});
 
 // Close buttons on other steps
 const cartClose2 = document.getElementById('cart-close-2');
@@ -657,18 +679,21 @@ const cartCheckoutBtn = document.getElementById('cart-checkout-btn');
 if (cartCheckoutBtn) {
     cartCheckoutBtn.addEventListener('click', () => {
         if (cart.length === 0) return;
-        // Render order summary
+        // Render order summary with thumbnails
         const summaryEl = document.getElementById('checkout-summary');
         if (summaryEl) {
-            summaryEl.innerHTML = '<h5>Đơn hàng của bạn</h5>' +
-                cart.map(i => {
-                    const p = productData[i.id];
-                    if (!p) return '';
-                    return `<div class="checkout-summary-item">
-                        <span>${p.title}</span>
-                        <span class="item-qty">x${i.qty}</span>
-                    </div>`;
-                }).join('');
+            summaryEl.innerHTML = cart.map(i => {
+                const p = productData[i.id];
+                if (!p) return '';
+                return `<div class="checkout-summary-item">
+                    <img src="${p.image}" alt="${p.title}" class="checkout-thumb">
+                    <div class="checkout-item-meta">
+                        <span class="checkout-item-title">${p.title}</span>
+                        <span class="checkout-item-sub">${p.category || 'Xà cừ Chuôn Ngọ'}</span>
+                    </div>
+                    <span class="item-qty">x${i.qty}</span>
+                </div>`;
+            }).join('');
         }
         showStep(2);
     });
