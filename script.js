@@ -576,7 +576,7 @@ if (modal) {
 
 // ===== Cart + Checkout =====
 // ⚙️ THAY URL NÀY sau khi tạo Google Apps Script (xem hướng dẫn):
-const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwgWUgFBil82g5KDzHyPdhsagAlgzBIYWasROlq8aEx4WuP2PtRdFqEgWMpPfPBFj9glw/exec';
+const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxbBuCDbgD0X8Z-_fF84dOguows3H02XtRF7-p4OlYT2Qs-aO3pIpSqgEhyPEESTEYmnA/exec';
 
 let cart = [];
 try { cart = JSON.parse(localStorage.getItem('sk-cart') || '[]'); } catch (e) { cart = []; }
