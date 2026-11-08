@@ -262,7 +262,7 @@ window.addEventListener('scroll', () => {
 
 // ===== Image lazy loading enhancement =====
 document.querySelectorAll('img').forEach(img => {
-    img.addEventListener('load', function() {
+    img.addEventListener('load', function () {
         this.style.opacity = '1';
     });
     if (img.complete) {
@@ -275,7 +275,7 @@ const productData = {
     // BST Hồ Điệp
     'ring-butterfly': {
         title: 'Nhẫn Khảm Xà Cừ Hồ Điệp',
-        category: 'I. Dòng Hiện Đại • BST Hồ Điệp',
+        category: 'Dòng Hiện Đại • BST Hồ Điệp',
         price: 'Bạc Ý 925 • Khảm xà cừ đại dương lấp lánh',
         image: 'assets/images/product_ring_model.jpg',
         features: [
@@ -288,7 +288,7 @@ const productData = {
     },
     'necklace-butterfly': {
         title: 'Vòng Cổ Khảm Xà Cừ Hồ Điệp',
-        category: 'I. Dòng Hiện Đại • BST Hồ Điệp',
+        category: 'Dòng Hiện Đại • BST Hồ Điệp',
         price: 'Bạc Ý 925 • Khảm xà cừ ánh xanh đại dương',
         image: 'assets/images/product_necklace_model.jpg',
         features: [
@@ -301,7 +301,7 @@ const productData = {
     },
     'bracelet-butterfly': {
         title: 'Vòng Tay Khảm Xà Cừ Hồ Điệp',
-        category: 'I. Dòng Hiện Đại • BST Hồ Điệp',
+        category: 'Dòng Hiện Đại • BST Hồ Điệp',
         price: 'Lắc Tay Bạc 925 • Khảm xà cừ ánh xanh ngọc',
         image: 'assets/images/product_bracelet_model.jpg',
         features: [
@@ -316,7 +316,7 @@ const productData = {
     // BST Mặt Trăng Ôm Mặt Trời
     'necklace-sunmoon': {
         title: 'Dây Chuyền Mặt Trăng Ôm Mặt Trời',
-        category: 'I. Dòng Hiện Đại • BST Mặt Trăng Ôm Mặt Trời',
+        category: 'Dòng Hiện Đại • BST Mặt Trăng Ôm Mặt Trời',
         price: 'Bản hòa ca Nhật Nguyệt • Đang chế tác hoàn thiện 20/11',
         image: 'assets/images/tải_xuống_3.jpg',
         features: [
@@ -329,7 +329,7 @@ const productData = {
     },
     'bracelet-sunmoon': {
         title: 'Vòng Tay Mặt Trăng Ôm Mặt Trời',
-        category: 'I. Dòng Hiện Đại • BST Mặt Trăng Ôm Mặt Trời',
+        category: 'Dòng Hiện Đại • BST Mặt Trăng Ôm Mặt Trời',
         price: 'Bản hòa ca Nhật Nguyệt • Đang chế tác hoàn thiện 20/11',
         image: 'assets/images/tải_xuống_4.jpg',
         features: [
@@ -344,7 +344,7 @@ const productData = {
     // BST Cặp Đôi
     'couple-set': {
         title: 'Bộ Trang Sức Dành Cho Cặp Đôi Sắc Khảm',
-        category: 'I. Dòng Hiện Đại • BST Cặp Đôi',
+        category: 'Dòng Hiện Đại • BST Cặp Đôi',
         price: 'Trang sức đôi gắn kết • Thiết kế đồng điệu bền lâu',
         image: 'assets/images/collection_item_3.jpg',
         features: [
@@ -357,7 +357,7 @@ const productData = {
     },
     'couple-custom': {
         title: 'Dịch Vụ Custom Riêng Theo Yêu Cầu',
-        category: 'I. Dòng Hiện Đại • Dịch Vụ Độc Quyền',
+        category: 'Dòng Hiện Đại • Dịch Vụ Độc Quyền',
         price: 'Khắc tên laser riêng biệt & Tích hợp NFC bí mật',
         image: 'assets/images/tải_xuống_5.jpg',
         features: [
@@ -372,7 +372,7 @@ const productData = {
     // BST Cẩm Hoa Phi Điệp
     'comb-butterfly': {
         title: 'Lược Cánh Bướm Khảm Xà Cừ',
-        category: 'II. Dòng Truyền Thống • BST Cẩm Hoa Phi Điệp',
+        category: 'Dòng Truyền Thống • BST Cẩm Hoa Phi Điệp',
         price: 'Thủ công Chuôn Ngọ • Bề mặt bóng mịn óng ả',
         image: 'assets/images/product_comb_real.jpg',
         features: [
@@ -385,7 +385,7 @@ const productData = {
     },
     'hairpin-flower': {
         title: 'Trâm Hoa Gỗ Mun Chuôn Ngọ',
-        category: 'II. Dòng Truyền Thống • BST Cẩm Hoa Phi Điệp',
+        category: 'Dòng Truyền Thống • BST Cẩm Hoa Phi Điệp',
         price: 'Gỗ mun quý hiếm • Khảm hoa xà cừ cưa đục thủ công',
         image: 'assets/images/product_hairpin_real.jpg',
         features: [
@@ -398,7 +398,7 @@ const productData = {
     },
     'mirror-butterfly': {
         title: 'Gương Bướm Đậu Lên Hoa',
-        category: 'II. Dòng Truyền Thống • BST Cẩm Hoa Phi Điệp',
+        category: 'Dòng Truyền Thống • BST Cẩm Hoa Phi Điệp',
         price: 'Gương cầm tay cổ phong • Khảm hoa bướm xà cừ',
         image: 'assets/images/product_comb_model.jpg',
         features: [
@@ -413,7 +413,7 @@ const productData = {
     // BST Huyền Nguyệt Linh Miêu
     'hairpin-cat': {
         title: 'Trâm Hình Con Mèo Huyền Nguyệt',
-        category: 'II. Dòng Truyền Thống • BST Huyền Nguyệt Linh Miêu',
+        category: 'Dòng Truyền Thống • BST Huyền Nguyệt Linh Miêu',
         price: 'Dáng trâm uốn mềm mại • Khảm linh miêu ngắm nguyệt',
         image: 'assets/images/product_hairpin_model.jpg',
         features: [
@@ -426,7 +426,7 @@ const productData = {
     },
     'mirror-cat': {
         title: 'Gương Mèo Trăng Khảm Xà Cừ',
-        category: 'II. Dòng Truyền Thống • BST Huyền Nguyệt Linh Miêu',
+        category: 'Dòng Truyền Thống • BST Huyền Nguyệt Linh Miêu',
         price: 'Gương soi cầm tay • Linh miêu vờn bóng trăng',
         image: 'assets/images/chatgpt_product_1.jpg',
         features: [
@@ -439,7 +439,7 @@ const productData = {
     },
     'comb-moon': {
         title: 'Lược Trăng Khảm Xà Cừ',
-        category: 'II. Dòng Truyền Thống • BST Huyền Nguyệt Linh Miêu',
+        category: 'Dòng Truyền Thống • BST Huyền Nguyệt Linh Miêu',
         price: 'Lược bán nguyệt cổ phong • Tinh hoa khảm xà cừ',
         image: 'assets/images/chatgpt_product_4.jpg',
         features: [
@@ -545,6 +545,7 @@ document.querySelectorAll('.quick-view').forEach(btn => {
     btn.addEventListener('click', (e) => {
         const prodId = btn.getAttribute('data-product');
         const prod = productData[prodId];
+        currentProdId = prodId;
         if (prod && modal) {
             modalImg.src = prod.image;
             modalTitle.textContent = prod.title;
@@ -573,11 +574,195 @@ if (modal) {
     });
 }
 
+// ===== Cart + Checkout =====
+// ⚙️ THAY URL NÀY sau khi tạo Google Apps Script (xem hướng dẫn):
+const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwgWUgFBil82g5KDzHyPdhsagAlgzBIYWasROlq8aEx4WuP2PtRdFqEgWMpPfPBFj9glw/exec';
+
+let cart = [];
+try { cart = JSON.parse(localStorage.getItem('sk-cart') || '[]'); } catch (e) { cart = []; }
+let currentProdId = null;
+
+const cartBtn = document.getElementById('cart-btn');
+const cartDrawer = document.getElementById('cart-drawer');
+const cartOverlay = document.getElementById('cart-overlay');
+const cartClose = document.getElementById('cart-close');
+const cartItemsEl = document.getElementById('cart-items');
+const cartEmptyEl = document.getElementById('cart-empty');
+const cartCountEl = document.getElementById('cart-count');
+const cartFooter = document.getElementById('cart-footer');
+
+// Step elements
+const step1 = document.getElementById('cart-step-1');
+const step2 = document.getElementById('cart-step-2');
+const step3 = document.getElementById('cart-step-3');
+
+function saveCart() { localStorage.setItem('sk-cart', JSON.stringify(cart)); }
+
+function showStep(n) {
+    [step1, step2, step3].forEach((s, i) => {
+        if (s) s.style.display = (i + 1 === n) ? 'flex' : 'none';
+    });
+}
+
+function renderCart() {
+    const total = cart.reduce((s, i) => s + i.qty, 0);
+    cartCountEl.textContent = total;
+    cartCountEl.classList.toggle('visible', total > 0);
+    cartEmptyEl.style.display = cart.length ? 'none' : 'block';
+    if (cartFooter) cartFooter.style.display = cart.length ? 'block' : 'none';
+    cartItemsEl.innerHTML = cart.map(i => {
+        const p = productData[i.id];
+        if (!p) return '';
+        return `<li class="cart-item">
+            <img src="${p.image}" alt="${p.title}">
+            <div class="cart-item-info">
+                <span class="cart-item-title">${p.title}</span>
+                <div class="cart-qty">
+                    <button data-act="dec" data-id="${i.id}" aria-label="Giảm">&minus;</button>
+                    <span>${i.qty}</span>
+                    <button data-act="inc" data-id="${i.id}" aria-label="Tăng">+</button>
+                </div>
+            </div>
+            <button class="cart-remove" data-act="rm" data-id="${i.id}" aria-label="Xóa">&times;</button>
+        </li>`;
+    }).join('');
+}
+
+function openCart() {
+    showStep(1);
+    cartDrawer.classList.add('active');
+    cartOverlay.classList.add('active');
+}
+function closeCart() {
+    cartDrawer.classList.remove('active');
+    cartOverlay.classList.remove('active');
+}
+
+if (cartBtn) cartBtn.addEventListener('click', openCart);
+if (cartClose) cartClose.addEventListener('click', closeCart);
+if (cartOverlay) cartOverlay.addEventListener('click', closeCart);
+
+// Close buttons on other steps
+const cartClose2 = document.getElementById('cart-close-2');
+const cartClose3 = document.getElementById('cart-close-3');
+if (cartClose2) cartClose2.addEventListener('click', closeCart);
+if (cartClose3) cartClose3.addEventListener('click', closeCart);
+
+// Back button on step 2
+const cartBackBtn = document.getElementById('cart-back-btn');
+if (cartBackBtn) cartBackBtn.addEventListener('click', () => showStep(1));
+
+// Proceed to checkout
+const cartCheckoutBtn = document.getElementById('cart-checkout-btn');
+if (cartCheckoutBtn) {
+    cartCheckoutBtn.addEventListener('click', () => {
+        if (cart.length === 0) return;
+        // Render order summary
+        const summaryEl = document.getElementById('checkout-summary');
+        if (summaryEl) {
+            summaryEl.innerHTML = '<h5>Đơn hàng của bạn</h5>' +
+                cart.map(i => {
+                    const p = productData[i.id];
+                    if (!p) return '';
+                    return `<div class="checkout-summary-item">
+                        <span>${p.title}</span>
+                        <span class="item-qty">x${i.qty}</span>
+                    </div>`;
+                }).join('');
+        }
+        showStep(2);
+    });
+}
+
+// Success close
+const successCloseBtn = document.getElementById('success-close-btn');
+if (successCloseBtn) successCloseBtn.addEventListener('click', closeCart);
+
+if (cartItemsEl) {
+    cartItemsEl.addEventListener('click', (e) => {
+        const b = e.target.closest('button[data-act]');
+        if (!b) return;
+        const item = cart.find(i => i.id === b.dataset.id);
+        if (!item) return;
+        if (b.dataset.act === 'inc') item.qty++;
+        if (b.dataset.act === 'dec') item.qty--;
+        if (b.dataset.act === 'rm') item.qty = 0;
+        cart = cart.filter(i => i.qty > 0);
+        saveCart();
+        renderCart();
+    });
+}
+
 if (modalOrderBtn) {
     modalOrderBtn.addEventListener('click', () => {
+        if (currentProdId) {
+            const item = cart.find(i => i.id === currentProdId);
+            if (item) item.qty++; else cart.push({ id: currentProdId, qty: 1 });
+            saveCart();
+            renderCart();
+        }
         if (modal) {
             modal.classList.remove('active');
             document.body.style.overflow = '';
         }
+        openCart();
     });
 }
+
+// ===== Checkout Form Submit → Google Sheets =====
+const checkoutForm = document.getElementById('checkout-form');
+if (checkoutForm) {
+    checkoutForm.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const submitBtn = document.getElementById('checkout-submit-btn');
+        submitBtn.classList.add('loading');
+        submitBtn.querySelector('span').textContent = 'Đang gửi...';
+
+        // Build order items string
+        const orderItems = cart.map(i => {
+            const p = productData[i.id];
+            return `${p ? p.title : i.id} (x${i.qty})`;
+        }).join(', ');
+
+        const formData = {
+            timestamp: new Date().toLocaleString('vi-VN', { timeZone: 'Asia/Ho_Chi_Minh' }),
+            name: document.getElementById('co-name').value.trim(),
+            phone: document.getElementById('co-phone').value.trim(),
+            email: document.getElementById('co-email').value.trim(),
+            address: document.getElementById('co-address').value.trim(),
+            engrave: document.getElementById('co-engrave').value.trim(),
+            note: document.getElementById('co-note').value.trim(),
+            items: orderItems
+        };
+
+        try {
+            await fetch(GOOGLE_SCRIPT_URL, {
+                method: 'POST',
+                mode: 'no-cors',
+                headers: { 'Content-Type': 'text/plain' }, // text/plain mới được phép với no-cors
+                body: JSON.stringify(formData)
+            });
+            console.log('✅ Đơn hàng đã gửi lên Google Sheet');
+        } catch (err) {
+            console.warn('⚠️ Fetch error:', err.message);
+        }
+
+        // Hiện success
+        const successMsg = document.getElementById('success-name-msg');
+        if (successMsg) {
+            successMsg.textContent = `${formData.name} ơi, Sắc Khảm đã nhận được đơn hàng và sẽ liên hệ xác nhận qua ${formData.phone} trong vòng 30 phút!`;
+        }
+
+        // Clear cart
+        cart = [];
+        saveCart();
+        renderCart();
+        checkoutForm.reset();
+        submitBtn.classList.remove('loading');
+        submitBtn.querySelector('span').textContent = 'Xác Nhận Đặt Hàng';
+        showStep(3);
+    });
+}
+
+renderCart();
+

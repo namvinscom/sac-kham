@@ -25,9 +25,8 @@
     <header id="header">
         <div class="header-inner">
             <div class="logo">
-                <a href="#home">
-                    <span class="logo-text">SẮC KHẢM</span>
-                    <span class="logo-tagline">Nghệ Thuật Khảm Xà Cừ</span>
+                <a href="#home" aria-label="Sắc Khảm">
+                    <span class="logo-img-wrap"><img src="assets/images/logo.png" alt="Sắc Khảm" class="logo-img"></span>
                 </a>
             </div>
             <nav id="main-nav">
@@ -43,7 +42,10 @@
                 </ul>
             </nav>
             <div class="header-actions">
-                <a href="#contact" class="btn btn-outline" style="padding: 8px 18px; font-size: 0.7rem;">Đặt Hàng</a>
+                <button id="cart-btn" class="icon-btn cart-btn" aria-label="Giỏ hàng">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M6 7h12l-1 13H7L6 7z"/><path d="M9 7V6a3 3 0 0 1 6 0v1"/></svg>
+                    <span id="cart-count" class="cart-count">0</span>
+                </button>
                 <button id="menu-toggle" class="icon-btn hamburger" aria-label="Menu">
                     <span></span><span></span><span></span>
                 </button>
@@ -372,8 +374,8 @@
             <div class="jewelry-showcase">
                 <div class="jewelry-categories">
                     <button class="jewelry-tab active" data-category="all">Tất Cả</button>
-                    <button class="jewelry-tab" data-category="modern">I. Dòng Hiện Đại</button>
-                    <button class="jewelry-tab" data-category="heritage">II. Dòng Truyền Thống</button>
+                    <button class="jewelry-tab" data-category="modern">Dòng Hiện Đại</button>
+                    <button class="jewelry-tab" data-category="heritage">Dòng Truyền Thống</button>
                     <button class="jewelry-tab" data-category="ring">Nhẫn</button>
                     <button class="jewelry-tab" data-category="necklace">Dây Chuyền</button>
                     <button class="jewelry-tab" data-category="bracelet">Vòng Tay</button>
@@ -385,7 +387,7 @@
                 <div class="collections-stream" id="modern-stream">
                     <div class="stream-section-header" data-aos="fade-up">
                         <h3 class="stream-section-title">
-                            <span>I. DÒNG HIỆN ĐẠI</span>
+                            <span>DÒNG HIỆN ĐẠI</span>
                         </h3>
                         <span class="stream-section-tag">Bạc Ý 925 • Xà Cừ Đương Đại • Trẻ Hóa Di Sản</span>
                     </div>
@@ -539,7 +541,7 @@
                 <div class="collections-stream" id="heritage-stream" style="margin-top: 64px;">
                     <div class="stream-section-header" data-aos="fade-up">
                         <h3 class="stream-section-title">
-                            <span>II. DÒNG TRUYỀN THỐNG</span>
+                            <span>DÒNG TRUYỀN THỐNG</span>
                         </h3>
                         <span class="stream-section-tag">Gỗ Mun Quý • Nghệ Nhân Chuôn Ngọ • Cổ Phong Đương Đại</span>
                     </div>
@@ -1175,12 +1177,95 @@
                         <li>Công nghệ: Tích hợp vi chip NFC lời nhắn số</li>
                         <li>Đóng gói: Hộp quà sang trọng Sắc Khảm</li>
                     </ul>
-                    <a href="#contact" class="btn btn-primary" id="modal-order-btn" style="width: 100%; justify-content: center;">Đặt Hàng & Tùy Biến</a>
+                    <button type="button" class="btn btn-primary" id="modal-order-btn" style="width: 100%; justify-content: center;">Thêm Vào Giỏ Hàng</button>
                 </div>
             </div>
         </div>
     </div>
 
+    <!-- Cart Drawer -->
+    <div id="cart-overlay" class="cart-overlay"></div>
+    <aside id="cart-drawer" class="cart-drawer" aria-label="Giỏ hàng">
+        <!-- STEP 1: Cart list -->
+        <div id="cart-step-1">
+            <div class="cart-header">
+                <h3>Giỏ Hàng</h3>
+                <button id="cart-close" class="cart-close" aria-label="Đóng">&times;</button>
+            </div>
+            <ul id="cart-items" class="cart-items"></ul>
+            <p id="cart-empty" class="cart-empty">Giỏ hàng của bạn đang trống.</p>
+            <div id="cart-footer" class="cart-footer" style="display:none;">
+                <button id="cart-checkout-btn" class="btn btn-primary btn-full">
+                    <span>Đặt Hàng Ngay</span>
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                </button>
+            </div>
+        </div>
+
+        <!-- STEP 2: Checkout form -->
+        <div id="cart-step-2" style="display:none;">
+            <div class="cart-header">
+                <button id="cart-back-btn" class="cart-back-btn" aria-label="Quay lại">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+                    Quay lại
+                </button>
+                <h3>Thông Tin Đặt Hàng</h3>
+                <button id="cart-close-2" class="cart-close" aria-label="Đóng">&times;</button>
+            </div>
+            <div class="checkout-order-summary" id="checkout-summary"></div>
+            <form id="checkout-form" class="checkout-form">
+                <div class="checkout-section-label">Thông tin người nhận</div>
+                <div class="form-group">
+                    <input type="text" id="co-name" name="name" required placeholder=" " autocomplete="name"/>
+                    <label for="co-name">Họ và Tên *</label>
+                </div>
+                <div class="form-group">
+                    <input type="tel" id="co-phone" name="phone" required placeholder=" " autocomplete="tel" pattern="[0-9]{9,11}"/>
+                    <label for="co-phone">Số Điện Thoại *</label>
+                </div>
+                <div class="form-group">
+                    <input type="email" id="co-email" name="email" placeholder=" " autocomplete="email"/>
+                    <label for="co-email">Email (để nhận xác nhận)</label>
+                </div>
+                <div class="form-group">
+                    <input type="text" id="co-address" name="address" required placeholder=" " autocomplete="street-address"/>
+                    <label for="co-address">Địa chỉ nhận hàng *</label>
+                </div>
+                <div class="checkout-section-label" style="margin-top:16px;">Yêu cầu thêm (tuỳ chọn)</div>
+                <div class="form-group">
+                    <input type="text" id="co-engrave" name="engrave" placeholder=" "/>
+                    <label for="co-engrave">Nội dung khắc tên / lời nhắn NFC</label>
+                </div>
+                <div class="form-group">
+                    <textarea id="co-note" name="note" rows="3" placeholder=" "></textarea>
+                    <label for="co-note">Ghi chú đơn hàng</label>
+                </div>
+                <button type="submit" class="btn btn-primary btn-full" id="checkout-submit-btn">
+                    <span>Xác Nhận Đặt Hàng</span>
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 2L11 13"/><path d="M22 2l-7 20-4-9-9-4 20-7z"/></svg>
+                </button>
+                <p class="checkout-note">✦ Sắc Khảm sẽ liên hệ xác nhận đơn qua Zalo/điện thoại trong vòng 30 phút.</p>
+            </form>
+        </div>
+
+        <!-- STEP 3: Success -->
+        <div id="cart-step-3" style="display:none;">
+            <div class="cart-header">
+                <h3>Đặt Hàng Thành Công</h3>
+                <button id="cart-close-3" class="cart-close" aria-label="Đóng">&times;</button>
+            </div>
+            <div class="checkout-success">
+                <div class="success-icon">✦</div>
+                <h4>Cảm ơn bạn đã đặt hàng!</h4>
+                <p id="success-name-msg">Sắc Khảm đã nhận được đơn hàng và sẽ liên hệ xác nhận trong vòng 30 phút.</p>
+                <div class="success-contact">
+                    <strong>Zalo / Hotline:</strong> 0941596276<br>
+                    <strong>Email:</strong> sackham.vn@gmail.com
+                </div>
+                <button id="success-close-btn" class="btn btn-primary btn-full" style="margin-top:20px;">Tiếp Tục Mua Sắm</button>
+            </div>
+        </div>
+    </aside>
     <!-- Back to Top -->
     <button id="back-to-top" aria-label="Lên đầu trang">
         <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 15l-6-6-6 6"/></svg>
