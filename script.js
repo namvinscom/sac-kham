@@ -148,42 +148,45 @@ jewelryTabs.forEach(tab => {
 });
 
 // ===== Testimonials Slider =====
-const testimonials = document.querySelectorAll('.testimonial');
-const dots = document.querySelectorAll('.dot');
-const prevBtn = document.querySelector('.testimonial-prev');
-const nextBtn = document.querySelector('.testimonial-next');
-let currentTestimonial = 0;
+document.addEventListener('DOMContentLoaded', () => {
+    const testimonials = document.querySelectorAll('.testimonial');
+    const dots = document.querySelectorAll('.dot');
+    const prevBtn = document.querySelector('.testimonial-prev');
+    const nextBtn = document.querySelector('.testimonial-next');
+    let currentTestimonial = 0;
 
-function showTestimonial(index) {
-    if (!testimonials.length || !testimonials[index]) return; // guard: không có testimonial
-    testimonials.forEach(t => t.classList.remove('active'));
-    dots.forEach(d => d.classList.remove('active'));
-    testimonials[index].classList.add('active');
-    if (dots[index]) dots[index].classList.add('active');
-    currentTestimonial = index;
-}
+    if (!testimonials.length) return; // không có testimonial, bỏ qua
 
-if (prevBtn && nextBtn && testimonials.length > 0) {
-    prevBtn.addEventListener('click', () => {
-        showTestimonial((currentTestimonial - 1 + testimonials.length) % testimonials.length);
-    });
-    nextBtn.addEventListener('click', () => {
-        showTestimonial((currentTestimonial + 1) % testimonials.length);
-    });
-}
+    function showTestimonial(index) {
+        if (!testimonials[index]) return;
+        testimonials.forEach(t => t.classList.remove('active'));
+        dots.forEach(d => d.classList.remove('active'));
+        testimonials[index].classList.add('active');
+        if (dots[index]) dots[index].classList.add('active');
+        currentTestimonial = index;
+    }
 
-if (dots.length > 0) {
+    // Hiển thị testimonial đầu tiên
+    showTestimonial(0);
+
+    if (prevBtn && nextBtn) {
+        prevBtn.addEventListener('click', () => {
+            showTestimonial((currentTestimonial - 1 + testimonials.length) % testimonials.length);
+        });
+        nextBtn.addEventListener('click', () => {
+            showTestimonial((currentTestimonial + 1) % testimonials.length);
+        });
+    }
+
     dots.forEach((dot, index) => {
         dot.addEventListener('click', () => showTestimonial(index));
     });
-}
 
-// Auto-rotate testimonials (chỉ khi có testimonial)
-if (testimonials.length > 0) {
+    // Auto-rotate testimonials
     setInterval(() => {
         showTestimonial((currentTestimonial + 1) % testimonials.length);
     }, 6000);
-}
+});
 
 // ===== Contact Form =====
 const contactForm = document.getElementById('contact-form');
