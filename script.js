@@ -147,46 +147,54 @@ jewelryTabs.forEach(tab => {
     });
 });
 
+// Check URL hash on load to filter category (e.g. san-pham.html#modern)
+window.addEventListener('DOMContentLoaded', () => {
+    const hash = window.location.hash.replace('#', '');
+    if (hash) {
+        const matchingTab = document.querySelector(`.jewelry-tab[data-category="${hash}"]`);
+        if (matchingTab) {
+            matchingTab.click();
+        }
+    }
+});
+
 // ===== Testimonials Slider =====
-document.addEventListener('DOMContentLoaded', () => {
-    const testimonials = document.querySelectorAll('.testimonial');
-    const dots = document.querySelectorAll('.dot');
-    const prevBtn = document.querySelector('.testimonial-prev');
-    const nextBtn = document.querySelector('.testimonial-next');
-    let currentTestimonial = 0;
+const testimonials = document.querySelectorAll('.testimonial');
+const dots = document.querySelectorAll('.dot');
+const prevBtn = document.querySelector('.testimonial-prev');
+const nextBtn = document.querySelector('.testimonial-next');
+let currentTestimonial = 0;
 
-    if (!testimonials.length) return; // không có testimonial, bỏ qua
+function showTestimonial(index) {
+    if (!testimonials.length || !testimonials[index]) return; // guard: không có testimonial
+    testimonials.forEach(t => t.classList.remove('active'));
+    dots.forEach(d => d.classList.remove('active'));
+    testimonials[index].classList.add('active');
+    if (dots[index]) dots[index].classList.add('active');
+    currentTestimonial = index;
+}
 
-    function showTestimonial(index) {
-        if (!testimonials[index]) return;
-        testimonials.forEach(t => t.classList.remove('active'));
-        dots.forEach(d => d.classList.remove('active'));
-        testimonials[index].classList.add('active');
-        if (dots[index]) dots[index].classList.add('active');
-        currentTestimonial = index;
-    }
+if (prevBtn && nextBtn && testimonials.length > 0) {
+    prevBtn.addEventListener('click', () => {
+        showTestimonial((currentTestimonial - 1 + testimonials.length) % testimonials.length);
+    });
+    nextBtn.addEventListener('click', () => {
+        showTestimonial((currentTestimonial + 1) % testimonials.length);
+    });
+}
 
-    // Hiển thị testimonial đầu tiên
-    showTestimonial(0);
-
-    if (prevBtn && nextBtn) {
-        prevBtn.addEventListener('click', () => {
-            showTestimonial((currentTestimonial - 1 + testimonials.length) % testimonials.length);
-        });
-        nextBtn.addEventListener('click', () => {
-            showTestimonial((currentTestimonial + 1) % testimonials.length);
-        });
-    }
-
+if (dots.length > 0) {
     dots.forEach((dot, index) => {
         dot.addEventListener('click', () => showTestimonial(index));
     });
+}
 
-    // Auto-rotate testimonials
+// Auto-rotate testimonials (chỉ khi có testimonial)
+if (testimonials.length > 0) {
     setInterval(() => {
         showTestimonial((currentTestimonial + 1) % testimonials.length);
     }, 6000);
-});
+}
 
 // ===== Contact Form =====
 const contactForm = document.getElementById('contact-form');
@@ -235,17 +243,19 @@ if (newsletterForm) {
 // ===== Back to Top =====
 const backToTop = document.getElementById('back-to-top');
 
-window.addEventListener('scroll', () => {
-    if (window.pageYOffset > 500) {
-        backToTop.classList.add('visible');
-    } else {
-        backToTop.classList.remove('visible');
-    }
-});
+if (backToTop) {
+    window.addEventListener('scroll', () => {
+        if (window.pageYOffset > 500) {
+            backToTop.classList.add('visible');
+        } else {
+            backToTop.classList.remove('visible');
+        }
+    });
 
-backToTop.addEventListener('click', () => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-});
+    backToTop.addEventListener('click', () => {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+}
 
 // ===== Parallax Effect for Discover Section =====
 window.addEventListener('scroll', () => {
@@ -279,7 +289,7 @@ const productData = {
     'ring-butterfly': {
         title: 'Nhẫn Khảm Xà Cừ Hồ Điệp',
         category: 'Dòng Hiện Đại • BST Hồ Điệp',
-        price: 'Bạc Ý 925 • Khảm xà cừ đại dương lấp lánh',
+        price: '433.000đ',
         image: 'assets/images/product_ring_model.jpg',
         features: [
             'Chất liệu: Bạc 925 cao cấp phủ rhodium chống oxy hóa',
@@ -292,7 +302,7 @@ const productData = {
     'necklace-butterfly': {
         title: 'Vòng Cổ Khảm Xà Cừ Hồ Điệp',
         category: 'Dòng Hiện Đại • BST Hồ Điệp',
-        price: 'Bạc Ý 925 • Khảm xà cừ ánh xanh đại dương',
+        price: '600.000đ',
         image: 'assets/images/product_necklace_model.jpg',
         features: [
             'Chất liệu: Bạc ý 925 cao cấp sáng bóng không rỉ',
@@ -305,7 +315,7 @@ const productData = {
     'bracelet-butterfly': {
         title: 'Vòng Tay Khảm Xà Cừ Hồ Điệp',
         category: 'Dòng Hiện Đại • BST Hồ Điệp',
-        price: 'Lắc Tay Bạc 925 • Khảm xà cừ ánh xanh ngọc',
+        price: '543.000đ',
         image: 'assets/images/product_bracelet_model.jpg',
         features: [
             'Thiết kế mảnh mai, tôn nét cổ tay thanh thoát',
@@ -320,7 +330,7 @@ const productData = {
     'necklace-sunmoon': {
         title: 'Dây Chuyền Mặt Trăng Ôm Mặt Trời',
         category: 'Dòng Hiện Đại • BST Mặt Trăng Ôm Mặt Trời',
-        price: 'Bản hòa ca Nhật Nguyệt • Đang chế tác hoàn thiện 20/11',
+        price: '600.000đ',
         image: 'assets/images/tai_xuong_3.jpg',
         features: [
             'Cảm hứng: Vầng dương ấm áp ôm trọn ánh nguyệt dịu dàng',
@@ -333,7 +343,7 @@ const productData = {
     'bracelet-sunmoon': {
         title: 'Vòng Tay Mặt Trăng Ôm Mặt Trời',
         category: 'Dòng Hiện Đại • BST Mặt Trăng Ôm Mặt Trời',
-        price: 'Bản hòa ca Nhật Nguyệt • Đang chế tác hoàn thiện 20/11',
+        price: '543.000đ',
         image: 'assets/images/tai_xuong_4.jpg',
         features: [
             'Thiết kế vòng nguyệt ôm ánh dương tinh tế',
@@ -344,31 +354,33 @@ const productData = {
         ]
     },
 
-    // BST Cặp Đôi
-    'couple-set': {
-        title: 'Bộ Trang Sức Dành Cho Cặp Đôi Sắc Khảm',
-        category: 'Dòng Hiện Đại • BST Cặp Đôi',
-        price: 'Trang sức đôi gắn kết • Thiết kế đồng điệu bền lâu',
+    // 2 BỘ SƯU TẬP TRỌN BỘ COMBO
+    'bst-van-mong': {
+        title: 'BST Vân Mộng Hồ Điệp (Trọn Bộ 3 Món)',
+        category: 'Dòng Hiện Đại • Combo Trọn Bộ',
+        price: '1.322.000đ',
         image: 'assets/images/collection_item_3.jpg',
         features: [
-            'Bộ đôi dây chuyền / vòng tay phối xà cừ tương hợp',
-            'Biểu tượng gắn kết vững bền vượt thời gian của tình yêu',
-            'Chất liệu bạc 925 tinh khiết & xà cừ Chuôn Ngọ tuyển chọn',
-            'Khắc đôi tên và ngày kỷ niệm của 2 bạn bằng laser sắc nét',
-            'Tích hợp chip NFC đồng bộ lưu giữ kỷ niệm tình yêu 2 người'
+            'Trọn bộ 3 món: Nhẫn (433k) + Dây Chuyền (600k) + Vòng Tay (543k)',
+            'Giá combo ưu đãi trọn gói: 1.322.000đ (Tiết kiệm so với mua lẻ: 1.576.000đ)',
+            'Chất liệu: Bạc Ý 925 & Xà cừ tự nhiên Chuôn Ngọ đại dương tuyển chọn',
+            'Miễn phí khắc laser tên, chữ ký hoặc ngày kỷ niệm trên cả 3 món',
+            'Tích hợp vi mạch NFC lưu trữ thông điệp bí mật thoại/video',
+            'Đóng gói hộp quà nhung nghệ thuật cao cấp Sắc Khảm'
         ]
     },
-    'couple-custom': {
-        title: 'Dịch Vụ Custom Riêng Theo Yêu Cầu',
-        category: 'Dòng Hiện Đại • Dịch Vụ Độc Quyền',
-        price: 'Khắc tên laser riêng biệt & Tích hợp NFC bí mật',
-        image: 'assets/images/tai_xuong_5.jpg',
+    'bst-diep-vu-nguyet': {
+        title: 'BST Điệp Vũ Nguyệt (Trọn Bộ 3 Món)',
+        category: 'Dòng Truyền Thống • Combo Trọn Bộ',
+        price: '1.358.000đ',
+        image: 'assets/images/collection_item_1.jpg',
         features: [
-            'Chế tác theo thông điệp, chữ ký hoặc dấu vân tay độc bản',
-            'Tích hợp chip NFC ẩn phát bài hát kỷ niệm, video, lời chúc',
-            'Đội ngũ nghệ nhân và thiết kế tư vấn 1-1 riêng biệt',
-            'Bảo dưỡng và hỗ trợ kỹ thuật số trọn đời',
-            'Hộp quà nghệ thuật niêm phong sáp mộc cổ điển'
+            'Trọn bộ 3 món: Lược khảm (398k) + Trâm cài tóc (316k) + Gương khảm (407k)',
+            'Giá combo ưu đãi trọn gói: 1.358.000đ',
+            'Chất liệu: Gỗ mun quý & Xà cừ Chuôn Ngọ cưa đục thủ công gần 1000 năm',
+            'Họa tiết cánh bướm ánh ngọc & linh miêu vờn trăng độc bản',
+            'Miễn phí khắc laser cá nhân hóa trên thân lược và cán gương',
+            'Hộp quà bọc gấm lót lụa truyền thống trang nhã'
         ]
     },
 
@@ -376,7 +388,7 @@ const productData = {
     'comb-butterfly': {
         title: 'Lược Cánh Bướm Khảm Xà Cừ',
         category: 'Dòng Truyền Thống • BST Cẩm Hoa Phi Điệp',
-        price: 'Thủ công Chuôn Ngọ • Bề mặt bóng mịn óng ả',
+        price: '398.000đ',
         image: 'assets/images/product_comb_real.jpg',
         features: [
             'Kỹ thuật khảm cưa lọng Chuôn Ngọ truyền thống gần 1000 năm',
@@ -389,7 +401,7 @@ const productData = {
     'hairpin-flower': {
         title: 'Trâm Hoa Gỗ Mun Chuôn Ngọ',
         category: 'Dòng Truyền Thống • BST Cẩm Hoa Phi Điệp',
-        price: 'Gỗ mun quý hiếm • Khảm hoa xà cừ cưa đục thủ công',
+        price: '316.000đ',
         image: 'assets/images/product_hairpin_real.jpg',
         features: [
             'Chất liệu gỗ mun đen tuyền tự nhiên càng dùng càng bóng sâu',
@@ -402,8 +414,8 @@ const productData = {
     'mirror-butterfly': {
         title: 'Gương Bướm Đậu Lên Hoa',
         category: 'Dòng Truyền Thống • BST Cẩm Hoa Phi Điệp',
-        price: 'Gương cầm tay cổ phong • Khảm hoa bướm xà cừ',
-        image: 'assets/images/product_comb_model.jpg',
+        price: '407.000đ',
+        image: 'assets/images/collection_item_3.jpg',
         features: [
             'Mặt sau khảm bức tranh bướm vờn hoa đào xà cừ đa sắc tuyệt mỹ',
             'Gương soi quang học độ nét cao, viền gia công trơn mịn',
@@ -417,7 +429,7 @@ const productData = {
     'hairpin-cat': {
         title: 'Trâm Hình Con Mèo Huyền Nguyệt',
         category: 'Dòng Truyền Thống • BST Huyền Nguyệt Linh Miêu',
-        price: 'Dáng trâm uốn mềm mại • Khảm linh miêu ngắm nguyệt',
+        price: '316.000đ',
         image: 'assets/images/product_hairpin_model.jpg',
         features: [
             'Tạo hình chú mèo uyển chuyển dưới vầng trăng khuyết',
@@ -430,8 +442,8 @@ const productData = {
     'mirror-cat': {
         title: 'Gương Mèo Trăng Khảm Xà Cừ',
         category: 'Dòng Truyền Thống • BST Huyền Nguyệt Linh Miêu',
-        price: 'Gương soi cầm tay • Linh miêu vờn bóng trăng',
-        image: 'assets/images/chatgpt_product_1.jpg',
+        price: '407.000đ',
+        image: 'assets/images/collection_item_2.jpg',
         features: [
             'Họa tiết mèo trăng huyền ảo, mang ý nghĩa may mắn và bình an',
             'Mỗi mảnh xà cừ bắt sáng lấp lánh như ánh trăng rằm',
@@ -443,7 +455,7 @@ const productData = {
     'comb-moon': {
         title: 'Lược Trăng Khảm Xà Cừ',
         category: 'Dòng Truyền Thống • BST Huyền Nguyệt Linh Miêu',
-        price: 'Lược bán nguyệt cổ phong • Tinh hoa khảm xà cừ',
+        price: '398.000đ',
         image: 'assets/images/chatgpt_product_4.jpg',
         features: [
             'Dáng lược bán nguyệt cong tròn mềm mại tựa vầng trăng',
@@ -458,7 +470,7 @@ const productData = {
     'necklace': {
         title: 'Vòng Cổ Bướm Sắc Khảm',
         category: 'Trang Sức Đương Đại • Bạc 925',
-        price: 'Bạc sáng • Khảm xà cừ ánh xanh đại dương',
+        price: '600.000đ',
         image: 'assets/images/product_necklace_model.jpg',
         features: [
             'Chất liệu: Bạc ý 925 cao cấp không rỉ',
@@ -471,7 +483,7 @@ const productData = {
     'bracelet': {
         title: 'Vòng Tay Bướm Sắc Khảm',
         category: 'Lắc Tay Bạc • Khảm Xà Cừ',
-        price: 'Bạc sáng • Khảm xà cừ ánh sắc tinh xảo',
+        price: '543.000đ',
         image: 'assets/images/product_bracelet_model.jpg',
         features: [
             'Chất liệu: Bạc 925 thanh mảnh, thiết kế ôm tay duyên dáng',
@@ -484,7 +496,7 @@ const productData = {
     'ring': {
         title: 'Nhẫn Sắc Khảm Xà Cừ',
         category: 'Nhẫn Bạc • Tối Giản Sang Trọng',
-        price: 'Tối giản, sang trọng • Ánh sắc tự nhiên xà cừ',
+        price: '433.000đ',
         image: 'assets/images/product_ring_model.jpg',
         features: [
             'Phong cách tối giản đương đại, dễ dàng phối trang phục',
@@ -497,7 +509,7 @@ const productData = {
     'comb': {
         title: 'Lược Khảm Xà Cừ Ánh Ngọc',
         category: 'Phụ Kiện Cổ Phong Đương Đại',
-        price: 'Bề mặt bóng • Thủ công tinh xảo',
+        price: '398.000đ',
         image: 'assets/images/product_comb_model.jpg',
         features: [
             'Chất liệu nền sừng/nhựa cao cấp phủ sơn mài bóng mượt',
@@ -510,7 +522,7 @@ const productData = {
     'hairpin': {
         title: 'Trâm Cài Khảm Xà Cừ (Dáng Uốn)',
         category: 'Trâm Cài Tóc • Nghệ Thuật',
-        price: 'Đường nét uyển chuyển • Chất liệu thủ công',
+        price: '316.000đ',
         image: 'assets/images/product_hairpin_model.jpg',
         features: [
             'Dáng trâm uốn lượn mềm mại lấy cảm hứng từ sóng nước',
@@ -523,7 +535,7 @@ const productData = {
     'wood-hairpin': {
         title: 'Trâm Cài Tóc Gỗ Mun Chuôn Ngọ',
         category: 'Gỗ Mun Quý • Khảm Hoa Xà Cừ',
-        price: 'Kỹ thuật cưa đục Chuôn Ngọ truyền thống',
+        price: '316.000đ',
         image: 'assets/images/product_hairpin_real.jpg',
         features: [
             'Gỗ mun đen tuyền tự nhiên càng dùng càng bóng đẹp',
@@ -535,6 +547,42 @@ const productData = {
     }
 };
 
+function openQuickView(prodId) {
+    const prod = productData[prodId] || productData['comb'];
+    const modal = document.getElementById('quick-view-modal');
+    if (!modal) return;
+    if (prod) {
+        const modalImg = document.getElementById('modal-img');
+        const modalTitle = document.getElementById('modal-title');
+        const modalBadge = document.getElementById('modal-badge');
+        const modalPrice = document.getElementById('modal-price');
+        const modalFeatures = document.getElementById('modal-features');
+        const modalOrderBtn = document.getElementById('modal-order-btn');
+        currentProdId = prodId;
+        if (modalImg) modalImg.src = prod.image;
+        if (modalTitle) modalTitle.textContent = prod.title;
+        if (modalBadge) modalBadge.textContent = prod.category;
+        if (modalPrice) modalPrice.textContent = prod.price;
+        if (modalFeatures) modalFeatures.innerHTML = prod.features.map(f => `<li>${f}</li>`).join('');
+        if (modalOrderBtn && (!modalOrderBtn.textContent || !modalOrderBtn.textContent.trim())) {
+            modalOrderBtn.textContent = 'Thêm Vào Giỏ Hàng';
+        }
+        modal.classList.add('active');
+        document.body.style.overflow = 'hidden';
+    }
+}
+
+// Global click delegation for .quick-view
+document.addEventListener('click', (e) => {
+    const btn = e.target.closest('.quick-view');
+    if (btn) {
+        e.preventDefault();
+        e.stopPropagation();
+        const prodId = btn.getAttribute('data-product');
+        openQuickView(prodId);
+    }
+});
+
 const modal = document.getElementById('quick-view-modal');
 const modalCloseBtn = document.getElementById('modal-close-btn');
 const modalImg = document.getElementById('modal-img');
@@ -543,23 +591,6 @@ const modalBadge = document.getElementById('modal-badge');
 const modalPrice = document.getElementById('modal-price');
 const modalFeatures = document.getElementById('modal-features');
 const modalOrderBtn = document.getElementById('modal-order-btn');
-
-document.querySelectorAll('.quick-view').forEach(btn => {
-    btn.addEventListener('click', (e) => {
-        const prodId = btn.getAttribute('data-product');
-        const prod = productData[prodId];
-        currentProdId = prodId;
-        if (prod && modal) {
-            modalImg.src = prod.image;
-            modalTitle.textContent = prod.title;
-            modalBadge.textContent = prod.category;
-            modalPrice.textContent = prod.price;
-            modalFeatures.innerHTML = prod.features.map(f => `<li>${f}</li>`).join('');
-            modal.classList.add('active');
-            document.body.style.overflow = 'hidden';
-        }
-    });
-});
 
 if (modalCloseBtn) {
     modalCloseBtn.addEventListener('click', () => {
