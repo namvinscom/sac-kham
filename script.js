@@ -285,27 +285,27 @@ document.querySelectorAll('img').forEach(img => {
 
 // ===== Quick View Modal Product Data & Handler =====
 const productData = {
-    // BST Hồ Điệp
+    // I. DÒNG HIỆN ĐẠI — BST Điệp Vũ Nguyệt
     'ring-butterfly': {
-        title: 'Nhẫn Khảm Xà Cừ Hồ Điệp',
-        category: 'Dòng Hiện Đại • BST Hồ Điệp',
+        title: 'Nhẫn Khảm Xà Cừ',
+        category: 'Dòng Hiện Đại • BST Điệp Vũ Nguyệt',
         price: '433.000đ',
-        image: 'assets/images/product_ring_model.jpg',
+        image: 'assets/images/sk_nhan_0.jpg',
         features: [
             'Chất liệu: Bạc 925 cao cấp phủ rhodium chống oxy hóa',
-            'Mặt nhẫn: Xà cừ tự nhiên Chuôn Ngọ cưa lọng cánh bướm tinh xảo',
+            'Mặt nhẫn: Xà cừ tự nhiên Chuôn Ngọ tuyển chọn ánh xanh đại dương',
             'Kiểu dáng: Tối giản, hiện đại, thanh lịch trên mọi ngón tay',
             'Khắc laser: Hỗ trợ khắc tên, ngày kỷ niệm bên trong lòng nhẫn',
             'Hộp đựng: Hộp nhung Sắc Khảm cao cấp'
         ]
     },
     'necklace-butterfly': {
-        title: 'Vòng Cổ Khảm Xà Cừ Hồ Điệp',
-        category: 'Dòng Hiện Đại • BST Hồ Điệp',
+        title: 'Dây Chuyền Khảm Xà Cừ',
+        category: 'Dòng Hiện Đại • BST Điệp Vũ Nguyệt',
         price: '600.000đ',
-        image: 'assets/images/product_necklace_model.jpg',
+        image: 'assets/images/sk_day_chuyen_1.jpg',
         features: [
-            'Chất liệu: Bạc ý 925 cao cấp sáng bóng không rỉ',
+            'Chất liệu: Bạc Ý 925 cao cấp sáng bóng không rỉ',
             'Mặt dây chuyền: Cánh bướm khảm xà cừ đại dương chuyển sắc',
             'Khắc tên laser cá nhân hóa phía sau mặt dây',
             'Tích hợp vi chip NFC thông minh lưu thông điệp thoại/video',
@@ -313,10 +313,10 @@ const productData = {
         ]
     },
     'bracelet-butterfly': {
-        title: 'Vòng Tay Khảm Xà Cừ Hồ Điệp',
-        category: 'Dòng Hiện Đại • BST Hồ Điệp',
+        title: 'Vòng Tay Khảm Xà Cừ',
+        category: 'Dòng Hiện Đại • BST Điệp Vũ Nguyệt',
         price: '543.000đ',
-        image: 'assets/images/product_bracelet_model.jpg',
+        image: 'assets/images/sk_vong_tay_1.jpg',
         features: [
             'Thiết kế mảnh mai, tôn nét cổ tay thanh thoát',
             'Họa tiết cánh bướm xà cừ Chuôn Ngọ tỏa sắc quang học',
@@ -326,152 +326,96 @@ const productData = {
         ]
     },
 
-    // BST Mặt Trăng Ôm Mặt Trời
-    'necklace-sunmoon': {
-        title: 'Dây Chuyền Mặt Trăng Ôm Mặt Trời',
-        category: 'Dòng Hiện Đại • BST Mặt Trăng Ôm Mặt Trời',
-        price: '600.000đ',
-        image: 'assets/images/tai_xuong_3.jpg',
-        features: [
-            'Cảm hứng: Vầng dương ấm áp ôm trọn ánh nguyệt dịu dàng',
-            'Chất liệu: Bạc 925 kết hợp viền xà cừ óng ánh',
-            'Tình trạng: Đang chế tác thủ công — Chính thức mở bán 20/11',
-            'Đặc quyền đặt trước: Tặng kèm khắc laser theo yêu cầu',
-            'Tích hợp công nghệ chạm NFC lời nhắn tương lai'
-        ]
-    },
-    'bracelet-sunmoon': {
-        title: 'Vòng Tay Mặt Trăng Ôm Mặt Trời',
-        category: 'Dòng Hiện Đại • BST Mặt Trăng Ôm Mặt Trời',
-        price: '543.000đ',
-        image: 'assets/images/tai_xuong_4.jpg',
-        features: [
-            'Thiết kế vòng nguyệt ôm ánh dương tinh tế',
-            'Xà cừ đại dương tuyển chọn từ tầng vân óng ả nhất',
-            'Tình trạng: Đang chế tác thủ công — Chính thức mở bán 20/11',
-            'Đặc quyền đặt sớm: Ưu đãi bookmark xà cừ và khắc tên',
-            'Đóng gói hộp quà nhung sang trọng'
-        ]
-    },
-
-    // 2 BỘ SƯU TẬP TRỌN BỘ COMBO
-    'bst-van-mong': {
-        title: 'BST Vân Mộng Hồ Điệp (Trọn Bộ 3 Món)',
-        category: 'Dòng Hiện Đại • Combo Trọn Bộ',
-        price: '1.322.000đ',
-        image: 'assets/images/collection_item_3.jpg',
-        features: [
-            'Trọn bộ 3 món: Nhẫn (433k) + Dây Chuyền (600k) + Vòng Tay (543k)',
-            'Giá combo ưu đãi trọn gói: 1.322.000đ (Tiết kiệm so với mua lẻ: 1.576.000đ)',
-            'Chất liệu: Bạc Ý 925 & Xà cừ tự nhiên Chuôn Ngọ đại dương tuyển chọn',
-            'Miễn phí khắc laser tên, chữ ký hoặc ngày kỷ niệm trên cả 3 món',
-            'Tích hợp vi mạch NFC lưu trữ thông điệp bí mật thoại/video',
-            'Đóng gói hộp quà nhung nghệ thuật cao cấp Sắc Khảm'
-        ]
-    },
-    'bst-diep-vu-nguyet': {
-        title: 'BST Điệp Vũ Nguyệt (Trọn Bộ 3 Món)',
-        category: 'Dòng Truyền Thống • Combo Trọn Bộ',
-        price: '1.358.000đ',
-        image: 'assets/images/collection_item_1.jpg',
-        features: [
-            'Trọn bộ 3 món: Lược khảm (398k) + Trâm cài tóc (316k) + Gương khảm (407k)',
-            'Giá combo ưu đãi trọn gói: 1.358.000đ',
-            'Chất liệu: Gỗ mun quý & Xà cừ Chuôn Ngọ cưa đục thủ công gần 1000 năm',
-            'Họa tiết cánh bướm ánh ngọc & linh miêu vờn trăng độc bản',
-            'Miễn phí khắc laser cá nhân hóa trên thân lược và cán gương',
-            'Hộp quà bọc gấm lót lụa truyền thống trang nhã'
-        ]
-    },
-
-    // BST Cẩm Hoa Phi Điệp
+    // II. DÒNG TRUYỀN THỐNG — BST Vân Mộng Hồ Điệp
     'comb-butterfly': {
-        title: 'Lược Cánh Bướm Khảm Xà Cừ',
-        category: 'Dòng Truyền Thống • BST Cẩm Hoa Phi Điệp',
+        title: 'Lược Khảm Xà Cừ',
+        category: 'Dòng Truyền Thống • BST Vân Mộng Hồ Điệp',
         price: '398.000đ',
-        image: 'assets/images/product_comb_real.jpg',
+        image: 'assets/images/sk_luoc_1.jpg',
         features: [
             'Kỹ thuật khảm cưa lọng Chuôn Ngọ truyền thống gần 1000 năm',
-            'Họa tiết cánh bướm xà cừ ánh ngọc trên nền sừng/nhựa cao cấp',
+            'Họa tiết cánh bướm xà cừ ánh ngọc trên nền đen bóng cao cấp',
             'Răng lược bo tròn êm dịu, nâng niu từng sợi tóc',
             'Khắc tên kỷ niệm hoặc lời tri ân trên thân lược',
             'Món quà truyền thống thanh lịch dành tặng mẹ, vợ, đối tác'
         ]
     },
-    'hairpin-flower': {
-        title: 'Trâm Hoa Gỗ Mun Chuôn Ngọ',
-        category: 'Dòng Truyền Thống • BST Cẩm Hoa Phi Điệp',
+    'hairpin-wave': {
+        title: 'Trâm Cài Tóc (Dáng Uốn)',
+        category: 'Dòng Truyền Thống • BST Vân Mộng Hồ Điệp',
         price: '316.000đ',
-        image: 'assets/images/product_hairpin_real.jpg',
+        image: 'assets/images/sk_tram_0.jpg',
+        features: [
+            'Dáng trâm uốn lượn mềm mại lấy cảm hứng từ mây nước cổ phong',
+            'Có 2 phiên bản màu: Nâu vân gỗ trầm và Vàng hổ phách thanh tao',
+            'Đầu trâm khảm xà cừ tự nhiên Chuôn Ngọ óng ánh sắc ngọc',
+            'Thanh trâm chắc chắn, giữ nếp tóc búi cổ phong hoàn hảo',
+            'Đi kèm hộp quà nghệ thuật Sắc Khảm và thiệp viết tay'
+        ]
+    },
+    'hairpin-flower': {
+        title: 'Trâm Cài Tóc (Khảm Hoa)',
+        category: 'Dòng Truyền Thống • BST Vân Mộng Hồ Điệp',
+        price: '316.000đ',
+        image: 'assets/images/sk_tram_2.jpg',
         features: [
             'Chất liệu gỗ mun đen tuyền tự nhiên càng dùng càng bóng sâu',
-            'Hoa mai / hoa đào khảm xà cừ trắng ngà tinh xảo từng cánh hoa',
+            'Họa tiết hoa 5 cánh khảm xà cừ trắng ánh xanh tinh xảo từng đường nét',
             'Chế tác thủ công 100% từ đôi bàn tay nghệ nhân Chuôn Ngọ',
             'Hỗ trợ khắc tên laser và thiệp viết tay trang trọng',
             'Bảo dưỡng làm sáng gỗ mun và xà cừ trọn đời'
         ]
     },
     'mirror-butterfly': {
-        title: 'Gương Bướm Đậu Lên Hoa',
-        category: 'Dòng Truyền Thống • BST Cẩm Hoa Phi Điệp',
+        title: 'Gương Khảm Xà Cừ',
+        category: 'Dòng Truyền Thống • BST Vân Mộng Hồ Điệp',
         price: '407.000đ',
-        image: 'assets/images/collection_item_3.jpg',
+        image: 'assets/images/sk_guong_0.jpg',
         features: [
-            'Mặt sau khảm bức tranh bướm vờn hoa đào xà cừ đa sắc tuyệt mỹ',
-            'Gương soi quang học độ nét cao, viền gia công trơn mịn',
+            'Mặt sau khảm bức tranh vầng trăng khuyết, mây cuộn và hồ điệp xà cừ',
+            'Gương soi quang học độ nét cao, khung gỗ tự nhiên gia công trơn mịn',
             'Kiểu dáng cổ phong thanh tao, tôn vinh nét đẹp truyền thống',
             'Khắc tên hoặc thông điệp ý nghĩa ở tay cầm',
             'Đi kèm túi nhung bảo vệ và hộp quà lót lụa'
         ]
     },
 
-    // BST Huyền Nguyệt Linh Miêu
-    'hairpin-cat': {
-        title: 'Trâm Hình Con Mèo Huyền Nguyệt',
-        category: 'Dòng Truyền Thống • BST Huyền Nguyệt Linh Miêu',
-        price: '316.000đ',
-        image: 'assets/images/product_hairpin_model.jpg',
+    // III. TRỌN BỘ BỘ SƯU TẬP
+    'bst-diep-vu-nguyet': {
+        title: 'BST Điệp Vũ Nguyệt (Trọn Bộ)',
+        category: 'Dòng Hiện Đại • Trọn Bộ Trang Sức',
+        price: '1.358.000đ',
+        image: 'assets/images/sk_bst_diep_vu_nguyet.jpg',
         features: [
-            'Tạo hình chú mèo uyển chuyển dưới vầng trăng khuyết',
-            'Xà cừ Chuôn Ngọ cưa lọng từng đường nét tai mèo và ánh trăng',
-            'Thanh trâm chắc chắn, giữ nếp tóc búi cổ phong hoàn hảo',
-            'Khắc ký tự riêng theo yêu cầu',
-            'Hộp quà nghệ thuật Sắc Khảm cao cấp'
+            'Trọn bộ 3 món: Nhẫn (433.000đ) + Dây Chuyền (600.000đ) + Vòng Tay (543.000đ)',
+            'Giá trọn bộ ưu đãi: 1.358.000đ (Tiết kiệm 218.000đ so với mua lẻ)',
+            'Chất liệu: Bạc Ý 925 & Xà cừ tự nhiên Chuôn Ngọ tuyển chọn',
+            'Miễn phí khắc laser tên, chữ ký hoặc ngày kỷ niệm',
+            'Tích hợp vi mạch NFC lưu trữ thông điệp bí mật thoại/video',
+            'Đóng gói hộp quà nhung nghệ thuật cao cấp Sắc Khảm'
         ]
     },
-    'mirror-cat': {
-        title: 'Gương Mèo Trăng Khảm Xà Cừ',
-        category: 'Dòng Truyền Thống • BST Huyền Nguyệt Linh Miêu',
-        price: '407.000đ',
-        image: 'assets/images/collection_item_2.jpg',
+    'bst-van-mong': {
+        title: 'BST Vân Mộng Hồ Điệp (Trọn Bộ)',
+        category: 'Dòng Truyền Thống • Trọn Bộ Quà Tặng',
+        price: '1.322.000đ',
+        image: 'assets/images/sk_bst_van_mong.jpg',
         features: [
-            'Họa tiết mèo trăng huyền ảo, mang ý nghĩa may mắn và bình an',
-            'Mỗi mảnh xà cừ bắt sáng lấp lánh như ánh trăng rằm',
-            'Kích thước nhỏ gọn, vừa vặn trong túi xách của quý cô hiện đại',
-            'Tùy chọn tích hợp chạm NFC lời chúc bí mật',
-            'Bảo hành phục chế và làm sáng xà cừ trọn đời'
-        ]
-    },
-    'comb-moon': {
-        title: 'Lược Trăng Khảm Xà Cừ',
-        category: 'Dòng Truyền Thống • BST Huyền Nguyệt Linh Miêu',
-        price: '398.000đ',
-        image: 'assets/images/chatgpt_product_4.jpg',
-        features: [
-            'Dáng lược bán nguyệt cong tròn mềm mại tựa vầng trăng',
-            'Họa tiết trăng sao và mây cuộn xà cừ óng ánh huyền bí',
-            'Gỗ mun/sừng cao cấp bóng mượt, răng lược êm ái cho tóc',
-            'Món quà di sản đậm chất thơ dành cho người trân quý',
-            'Đóng gói hộp quà cao cấp chuẩn phong cách Sắc Khảm'
+            'Trọn bộ phụ kiện cổ phong: Lược khảm (398.000đ) + Trâm cài tóc (316.000đ) + Gương khảm (407.000đ)',
+            'Giá trọn bộ BST Vân Mộng Hồ Điệp: 1.322.000đ',
+            'Chất liệu: Gỗ quý & Xà cừ Chuôn Ngọ cưa đục thủ công gần 1000 năm',
+            'Họa tiết hồ điệp, hoa lá và vầng trăng khuyết độc bản',
+            'Miễn phí khắc laser cá nhân hóa trên thân lược và cán gương',
+            'Hộp quà bọc lụa cao cấp chuẩn phong cách Sắc Khảm'
         ]
     },
 
     // Fallback keys
     'necklace': {
-        title: 'Vòng Cổ Bướm Sắc Khảm',
+        title: 'Dây Chuyền Khảm Xà Cừ',
         category: 'Trang Sức Đương Đại • Bạc 925',
         price: '600.000đ',
-        image: 'assets/images/product_necklace_model.jpg',
+        image: 'assets/images/sk_day_chuyen_1.jpg',
         features: [
             'Chất liệu: Bạc ý 925 cao cấp không rỉ',
             'Khảm: Xà cừ tự nhiên Chuôn Ngọ óng ánh xanh biếc',
@@ -481,10 +425,10 @@ const productData = {
         ]
     },
     'bracelet': {
-        title: 'Vòng Tay Bướm Sắc Khảm',
-        category: 'Lắc Tay Bạc • Khảm Xà Cừ',
+        title: 'Vòng Tay Khảm Xà Cừ',
+        category: 'Vòng Tay Bạc • Khảm Xà Cừ',
         price: '543.000đ',
-        image: 'assets/images/product_bracelet_model.jpg',
+        image: 'assets/images/sk_vong_tay_1.jpg',
         features: [
             'Chất liệu: Bạc 925 thanh mảnh, thiết kế ôm tay duyên dáng',
             'Khảm: Cánh bướm xà cừ thủ công đa sắc',
@@ -494,10 +438,10 @@ const productData = {
         ]
     },
     'ring': {
-        title: 'Nhẫn Sắc Khảm Xà Cừ',
+        title: 'Nhẫn Khảm Xà Cừ',
         category: 'Nhẫn Bạc • Tối Giản Sang Trọng',
         price: '433.000đ',
-        image: 'assets/images/product_ring_model.jpg',
+        image: 'assets/images/sk_nhan_0.jpg',
         features: [
             'Phong cách tối giản đương đại, dễ dàng phối trang phục',
             'Mặt nhẫn tròn khảm xà cừ tự nhiên chuyển sắc theo ánh sáng',
@@ -507,10 +451,10 @@ const productData = {
         ]
     },
     'comb': {
-        title: 'Lược Khảm Xà Cừ Ánh Ngọc',
+        title: 'Lược Khảm Xà Cừ',
         category: 'Phụ Kiện Cổ Phong Đương Đại',
         price: '398.000đ',
-        image: 'assets/images/product_comb_model.jpg',
+        image: 'assets/images/sk_luoc_1.jpg',
         features: [
             'Chất liệu nền sừng/nhựa cao cấp phủ sơn mài bóng mượt',
             'Họa tiết cánh bướm khảm xà cừ Chuôn Ngọ tỉ mỉ từng chi tiết',
@@ -520,10 +464,10 @@ const productData = {
         ]
     },
     'hairpin': {
-        title: 'Trâm Cài Khảm Xà Cừ (Dáng Uốn)',
+        title: 'Trâm Cài Tóc (Dáng Uốn)',
         category: 'Trâm Cài Tóc • Nghệ Thuật',
         price: '316.000đ',
-        image: 'assets/images/product_hairpin_model.jpg',
+        image: 'assets/images/sk_tram_0.jpg',
         features: [
             'Dáng trâm uốn lượn mềm mại lấy cảm hứng từ sóng nước',
             'Đầu trâm khảm xà cừ tự nhiên xoáy tròn lấp lánh',
@@ -533,10 +477,10 @@ const productData = {
         ]
     },
     'wood-hairpin': {
-        title: 'Trâm Cài Tóc Gỗ Mun Chuôn Ngọ',
+        title: 'Trâm Cài Tóc (Khảm Hoa)',
         category: 'Gỗ Mun Quý • Khảm Hoa Xà Cừ',
         price: '316.000đ',
-        image: 'assets/images/product_hairpin_real.jpg',
+        image: 'assets/images/sk_tram_2.jpg',
         features: [
             'Gỗ mun đen tuyền tự nhiên càng dùng càng bóng đẹp',
             'Hoa mai/đào xà cừ trắng ngà được cưa lọng chuẩn xác từng mm',
